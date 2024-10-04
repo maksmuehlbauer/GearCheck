@@ -1,1 +1,171 @@
 /* You can add global styles to this file, and also import other style files */
+
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+
+// $primary: #2E7D32; //darkgreen
+// $secondary: #D65F38; //terracotta
+// $background: #E2B93B; //sand
+// $text: #333333; //Grey 75%
+// $text-second:#A9A9A9; // grey 25%
+
+// button {
+//   font-size: 24px;
+//   width: 200px;
+//   height: 40px;
+//   // background-color: $secondary;
+//   // padding: 8px 32px;
+//   border: none;
+//   border-radius: 12px;
+// }
+
+a {
+  text-decoration: none;
+  color: black;
+}
+
+
+.desk-max-width {
+  width: 100%;
+  max-width: 1440px;
+}
+
+@mixin display($f: flex, $jc:center, $ai:center) {
+  display: $f;
+  justify-content: $jc;
+  align-items: $ai;
+}
+
+h1 {
+  font-size: 32px;
+  color: black;
+  font-weight: 500;
+  margin: 0;
+}
+
+h2 {
+  font-size: 24px;
+  // color: $font-color-one;
+  font-weight: 600;
+  margin: 0;
+}
+
+h3 {
+  font-size: 14px;
+  // color: $font-color-one;
+  margin: 0;
+  margin-top: -8px;
+}
+
+p {
+  font-size: 14px;
+  // color: $font-color-one;
+  margin: 0
+}
+
+// Margins
+.mb-8 {
+    margin-bottom: 8px;
+  }
+  .mb-16 {
+    margin-bottom: 16px;
+  }
+  .mb-32 {
+    margin-bottom: 32px;
+  }
+  
+  .mt-8 {
+    margin-top: 8px;
+  }
+  .mt-16 {
+    margin-top: 16px;
+  }
+  .mt-32 {
+    margin-top: 32px;
+  }
+  
+  .ml-8 {
+    margin-left: 8px;
+  }
+  .ml-16 {
+    margin-left: 16px;
+  }
+  .ml-32 {
+    margin-left: 32px;
+  }
+  
+  .mr-8 {
+    margin-right: 8px;
+  }
+  .mr-16 {
+    margin-right: 16px;
+  }
+  .mr-32 {
+    margin-right: 32px;
+  }
+  
+  // Paddings
+  .pb-8 {
+    padding-bottom: 8px;
+  }
+  .pb-16 {
+    padding-bottom: 16px;
+  }
+  .pb-32 {
+    padding-bottom: 32px;
+  }
+  
+  .pt-8 {
+    padding-top: 8px;
+  }
+  .pt-16 {
+    padding-top: 16px;
+  }
+  .pt-32 {
+    padding-top: 32px;
+  }
+  
+  .pl-8 {
+    padding-left: 8px;
+  }
+  .pl-16 {
+    padding-left: 16px;
+  }
+  .pl-32 {
+    padding-left: 32px;
+  }
+  
+  .pr-8 {
+    padding-right: 8px;
+  }
+  .pr-16 {
+    padding-right: 16px;
+  }
+  .pr-32 {
+    padding-right: 32px;
+  }
+  
+  // Kombinierte Klassen für Margin
+  .m-8 {
+    margin: 8px;
+  }
+  .m-16 {
+    margin: 16px;
+  }
+  .m-32 {
+    margin: 32px;
+  }
+  
+  // Kombinierte Klassen für Padding
+  .p-8 {
+    padding: 8px;
+  }
+  .p-16 {
+    padding: 16px;
+  }
+  .p-32 {
+    padding: 32px;
+  }
+  

@@ -1,0 +1,27 @@
+
+<div class="flex-default vh-100">
+
+    <h1 class="mb-16">Login</h1>
+    <form (ngSubmit)="onSubmit()">
+
+      <mat-form-field appearance="fill">
+        <mat-label>Username</mat-label>
+        <input matInput [(ngModel)]="user.name" placeholder="Username" type="text" name="username" id="name" minlength="2" required>
+        <mat-icon matSuffix>person</mat-icon>
+      </mat-form-field>
+  
+      <mat-form-field appearance="fill">
+        <mat-label>Password</mat-label>
+        <input matInput [(ngModel)]="user.password" placeholder="Password" type="password" name="password" id="password" minlength="6" required>
+        <mat-icon matSuffix>lock</mat-icon>
+      </mat-form-field>
+  
+      <button class="mb-8" mat-flat-button color="primary">Login</button>
+
+    </form>
+
+    <a href="#">Forgott your password?</a>
+
+    <a href="signup">new here?</a>
+
+</div>
