@@ -22,6 +22,29 @@ $bg-color: #ececec;
 //   border-radius: 12px;
 // }
 
+@mixin display($f: flex, $jc:center, $ai:center) {
+  display: $f;
+  justify-content: $jc;
+  align-items: $ai;
+}
+
+
+.flex-default {
+  @include display();
+  flex-direction: column;
+}
+
+.bg-color{
+  background-color: $bg-color
+}
+
+.sign-box {
+  background-color: white;
+  border-radius: 12px;
+  padding: 64px;
+  
+}
+
 a {
   text-decoration: none;
   color: black;
@@ -33,11 +56,7 @@ a {
   max-width: 1440px;
 }
 
-@mixin display($f: flex, $jc:center, $ai:center) {
-  display: $f;
-  justify-content: $jc;
-  align-items: $ai;
-}
+
 
 h1 {
   font-size: 32px;
