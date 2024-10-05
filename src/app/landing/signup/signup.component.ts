@@ -1,7 +1,7 @@
 import { Component, inject } from '@angular/core';
 import { MatCardModule } from '@angular/material/card';
 import { MatIconModule } from '@angular/material/icon';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, NgForm } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 
 import { MatSelectModule } from '@angular/material/select';
@@ -32,13 +32,24 @@ import { User } from '../../models/user.model';
 export class SignupComponent {
 
   user = new User();
-
+  pwConfirmation: any = ''
+  isDisabled = false;
+  mailTest = false
 
   constructor() {
   }
 
 
-  onSubmit() {
-    console.log(this.user)
+  onSubmit(ngForm: NgForm) {
+    if (ngForm.submitted && ngForm.form.valid && this.mailTest) {
+      // console.log(this.user)
+      // console.log('pw confirmation', this.pwConfirmation)
+      // this.isDisabled = true
+      ngForm.resetForm();
+    } else if (ngForm.submitted && ngForm.form.valid && !this.mailTest) {
+      console.info('send post TEST')
+      ngForm.resetForm();
+      // this.isDisabled = true
+    }
   }
 }

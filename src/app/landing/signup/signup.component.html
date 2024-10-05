@@ -1,38 +1,54 @@
 
-<div class="flex-default vh-100">
-
+<div class="flex-default vh-100 bg-color">
+  <div class="flex-default signup-box">
     <h1 class="mb-16">Sign up</h1>
-    <form (ngSubmit)="onSubmit()">
+    <form (ngSubmit)="onSubmit(contactForm)" #contactForm="ngForm">
 
       <mat-form-field appearance="fill">
         <mat-label>Username</mat-label>
-        <input matInput [(ngModel)]="user.name" placeholder="Username" type="text" name="username" id="name" minlength="2" required>
-        <mat-icon matSuffix>person</mat-icon>
+        <input matInput #username="ngModel" [(ngModel)]="user.name" placeholder="Username" type="text" name="username" id="name" minlength="2" required>
+        <mat-icon *ngIf="username.invalid && username.errors?.['required']" matSuffix>person</mat-icon>
+        <mat-icon *ngIf="username.errors?.['minlength']" matSuffix>error</mat-icon>
+        <mat-icon *ngIf="username.valid" matSuffix>check</mat-icon>
       </mat-form-field>
 
       <mat-form-field appearance="fill">
         <mat-label>E-Mail</mat-label>
-        <input matInput [(ngModel)]="user.name" placeholder="E-Mail" type="email" name="email" id="mail" minlength="2" required>
-        <mat-icon matSuffix>person</mat-icon>
+        <input matInput #mail="ngModel" [(ngModel)]="user.mail" placeholder="E-Mail" type="email" name="email" id="mail" minlength="6" pattern="[a-zA-Z0-9._%+\-]+@[a-zA-Z0-9.\-]+\.[a-zA-Z]{2,}" required>
+        <mat-icon *ngIf="mail.invalid && mail.errors?.['required']" matSuffix>mail</mat-icon>
+        <mat-icon *ngIf="mail.errors?.['pattern']" matSuffix>error</mat-icon>
+        <mat-icon *ngIf="mail.valid" matSuffix>check</mat-icon>
+        @if (mail.errors?.['pattern']) {
+          <mat-hint>example: mail&#64;provider.com</mat-hint>
+        }
       </mat-form-field>
+
   
-      <mat-form-field appearance="fill">
+      <mat-form-field appearance="fill" >
         <mat-label>Password</mat-label>
-        <input matInput [(ngModel)]="user.password" placeholder="Password" type="password" name="password" id="password" minlength="6" required>
-        <mat-icon matSuffix>lock</mat-icon>
+        <input matInput #password="ngModel" [(ngModel)]="user.password" placeholder="Password" type="password" name="password" id="password" minlength="6" pattern="(?=.*[A-Z0-9])(?=.*[0-9])[A-Za-z0-9]{6,}" required>
+        <mat-icon *ngIf="password.invalid && password.errors?.['required']" matSuffix>lock</mat-icon>
+        <mat-icon *ngIf="password.errors?.['pattern']" matSuffix>error</mat-icon>
+        <mat-icon *ngIf="password.valid" matSuffix>check</mat-icon>
+        <mat-hint *ngIf="password.errors?.['pattern']">min. 6 characters,including 1 capital letter and 1 digit</mat-hint>
       </mat-form-field>
 
       <mat-form-field appearance="fill">
         <mat-label>Password confirmation</mat-label>
-        <input matInput [(ngModel)]="user.password" placeholder="Password confirmation" type="password" name="password confirmation" id="password confirmation" minlength="6" required>
-        <mat-icon matSuffix>lock</mat-icon>
+        <input matInput #passwordConfirm="ngModel" [(ngModel)]="pwConfirmation" placeholder="Password confirmation" type="password" name="password confirmation" id="password confirmation" minlength="6" required>
+        <mat-icon *ngIf="passwordConfirm.invalid && passwordConfirm.errors?.['required']" matSuffix>lock</mat-icon>
+        <mat-icon *ngIf="passwordConfirm.dirty && passwordConfirm.value !== user.password" matSuffix>error</mat-icon>
+        <mat-icon *ngIf="passwordConfirm.valid && passwordConfirm.value === user.password" matSuffix>check</mat-icon>
       </mat-form-field>
   
-      <button class="mb-8" mat-flat-button color="primary">Register</button>
+      <button class="mb-16" mat-flat-button color="primary" [disabled]="isDisabled">Register</button>
 
     </form>
 
     <a href="login">back to login</a>
+  </div>
+
+
 
 
 </div>

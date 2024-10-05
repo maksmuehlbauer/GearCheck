@@ -1,5 +1,8 @@
 @import './../../../styles.scss';
 
+.bg-color{
+    background-color: $bg-color
+}
 
 .flex-default {
     @include display();
@@ -12,10 +15,20 @@
 
 
 mat-form-field {
-    width: 300px;
+    width: 400px;
+    position: relative;
+    overflow: visible;
 }
 
 form {
     @include display();
     flex-direction: column;
 }
+
+.signup-box {
+    background-color: white;
+    border-radius: 12px;
+    padding: 64px;
+    
+}
+
