@@ -96,6 +96,23 @@
             ],
             "scripts": []
           }
+        },
+        "deploy": {
+          "builder": "@angular/fire:deploy",
+          "options": {
+            "version": 2
+          },
+          "configurations": {
+            "production": {
+              "buildTarget": "gear-check:build:production",
+              "serveTarget": "gear-check:serve:production"
+            },
+            "development": {
+              "buildTarget": "gear-check:build:development",
+              "serveTarget": "gear-check:serve:development"
+            }
+          },
+          "defaultConfiguration": "production"
         }
       }
     }

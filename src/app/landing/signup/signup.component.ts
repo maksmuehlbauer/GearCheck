@@ -11,6 +11,9 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatDividerModule } from '@angular/material/divider';
 import { MatButtonModule } from '@angular/material/button';
 import { User } from '../../models/user.model';
+// import { Firestore, collection, addDoc } from '@angular/fire/firestore';
+import { UsersService } from '../../users.service';
+
 
 @Component({
   selector: 'app-signup',
@@ -31,25 +34,41 @@ import { User } from '../../models/user.model';
 })
 export class SignupComponent {
 
-  user = new User();
+  // user = new User();
   pwConfirmation: any = ''
   isDisabled = false;
   mailTest = false
+
+  // firestore: Firestore = inject(Firestore)
+  usersService = inject(UsersService)
+  uS = this.usersService.user
 
   constructor() {
   }
 
 
-  onSubmit(ngForm: NgForm) {
+  async saveUser(ngForm: NgForm) {
     if (ngForm.submitted && ngForm.form.valid && this.mailTest) {
-      // console.log(this.user)
-      // console.log('pw confirmation', this.pwConfirmation)
-      // this.isDisabled = true
-      ngForm.resetForm();
+      // path for Live Services
+
     } else if (ngForm.submitted && ngForm.form.valid && !this.mailTest) {
-      console.info('send post TEST')
-      ngForm.resetForm();
-      // this.isDisabled = true
+      try {
+        // const docRef = await addDoc(collection(this.firestore, "users"), this.usersService.user.toJSON());
+        this.usersService.addUser()
+        console.info('Send Post Complete')
+        ngForm.resetForm();
+      } catch (error) {
+        console.error('Error add user to Firestore', error)
+      }
+      
+      
+      
+
+      // console.log(this.user)
+      // ngForm.resetForm();
+
+      
     }
   }
+
 }

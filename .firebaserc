@@ -1,0 +1,14 @@
+{
+  "targets": {
+    "gear-check-1cad0": {
+      "hosting": {
+        "gear-check": [
+          "gear-check-1cad0"
+        ]
+      }
+    }
+  },
+  "projects": {
+    "default": "gear-check-1cad0"
+  }
+}
