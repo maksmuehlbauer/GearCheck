@@ -1,4 +1,5 @@
 export class User {
+    id: string;
     name: string;
     password: string;
     mail: string;
@@ -6,6 +7,7 @@ export class User {
     createdAt: Date = new Date()
 
     constructor(obj?: any) {
+        this.id = obj ? obj.id : '';
         this.name = obj ? obj.name : '';
         this.password = obj ? obj.password : '';
         this.mail = obj ? obj.mail : '';
@@ -15,6 +17,7 @@ export class User {
 
     public toJSON() {
         return {
+            id: this.id,
             name: this.name,
             password: this.password,
             mail: this.mail,
