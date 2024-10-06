@@ -5,7 +5,7 @@ html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 
 
-// $primary: #2E7D32; //darkgreen
+$primary: #2E7D32; //darkgreen
 // $secondary: #D65F38; //terracotta
 // $background: #E2B93B; //sand
 // $text: #333333; //Grey 75%
@@ -28,6 +28,9 @@ $bg-color: #ececec;
   align-items: $ai;
 }
 
+.pos-rel {
+  position: relative
+}
 
 .flex-default {
   @include display();

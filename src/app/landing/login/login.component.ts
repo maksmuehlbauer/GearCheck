@@ -10,7 +10,8 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 
 import { MatDividerModule } from '@angular/material/divider';
 import { MatButtonModule } from '@angular/material/button';
-import { User } from '../../models/user.model';
+// import { User } from '../../models/user.model';
+import { UsersService } from '../../users.service';
 
 @Component({
   selector: 'app-login',
@@ -31,14 +32,19 @@ import { User } from '../../models/user.model';
 })
 export class LoginComponent {
 
-  user = new User();
+  // user = new User();
+  usersService = inject(UsersService)
+  uS = this.usersService.user
 
 
   constructor() {
   }
 
+  async logIn() {
+    // let userName = this.uS.name
+    // let pw = this.uS.password
+    // console.log(userName, pw)
 
-  onSubmit() {
-    console.log(this.user)
+    // found = this.usersService.allUser.find(user => username )
   }
 }

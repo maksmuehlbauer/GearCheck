@@ -1,6 +1,10 @@
 
 <div class="flex-default vh-100 bg-color">
   <div class="flex-default sign-box">
+    <div class="mb-32">
+      <img src="./assets/img/logo3.png" alt="" class="logo-img">
+      <h4 class="logo-text">GearCheck</h4>
+    </div>
     <h1 class="mb-16">Sign up</h1>
     <form (ngSubmit)="saveUser(contactForm)" #contactForm="ngForm">
 
@@ -45,7 +49,8 @@
 
     </form>
 
-    <a href="login">back to login</a>
+    <a href="login"></a>
+    <p>I am allready registred<a href="login"><button class="ml-8" mat-flat-button color="primary">Login</button></a></p>
   </div>
 
 

@@ -1,28 +1,36 @@
 
 <div class="flex-default vh-100 bg-color">
+
   <div class="flex-default sign-box">
+    <div class="mb-32">
+      <img src="./assets/img/logo3.png" alt="" class="logo-img">
+      <h4 class="logo-text">GearCheck</h4>
+    </div>
+
     <h1 class="mb-16">Login</h1>
-    <form (ngSubmit)="onSubmit()">
+    <form (ngSubmit)="usersService.login(uS.name, uS.password)">
 
       <mat-form-field appearance="fill">
         <mat-label>Username</mat-label>
-        <input matInput [(ngModel)]="user.name" placeholder="Username" type="text" name="username" id="name" minlength="2" required>
+        <input matInput #username="ngModel" [(ngModel)]="uS.name" placeholder="Username" type="text" name="username" id="name" minlength="2" required>
         <mat-icon matSuffix>person</mat-icon>
+
       </mat-form-field>
   
-      <mat-form-field appearance="fill">
+      <mat-form-field appearance="fill" >
         <mat-label>Password</mat-label>
-        <input matInput [(ngModel)]="user.password" placeholder="Password" type="password" name="password" id="password" minlength="6" required>
+        <input matInput #password="ngModel" [(ngModel)]="uS.password" placeholder="Password" type="password" name="password" id="password" minlength="6" pattern="(?=.*[A-Z0-9])(?=.*[0-9])[A-Za-z0-9]{6,}" required>
         <mat-icon matSuffix>lock</mat-icon>
+
       </mat-form-field>
   
       <button class="mb-8" mat-flat-button color="primary">Login</button>
 
     </form>
 
-    <a href="#">Forgott your password?</a>
+    <a href="#" class="mb-16">Forgott your password?</a>
 
-    <a href="signup">new here?</a>
+    <p>new here?<a href="signup"><button class="ml-8" mat-flat-button color="primary">Register</button></a></p>
   </div>
 
 
