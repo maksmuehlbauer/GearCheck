@@ -1,8 +1,10 @@
 import { inject, Injectable } from '@angular/core';
-import { Firestore, collection, addDoc, onSnapshot, where, query, getDocs, updateDoc } from '@angular/fire/firestore';
+import { Firestore, collection, addDoc, onSnapshot, where, query, getDocs, updateDoc, doc, setDoc } from '@angular/fire/firestore';
 import { User } from './models/user.model';
 import { OnInit } from '@angular/core';
 import { RouterLink } from '@angular/router';
+import { Router } from '@angular/router';
+
 
 
 @Injectable({
@@ -14,21 +16,43 @@ export class UsersService implements OnInit {
   user = new User();
   // allUser: any[] = [];
 
-  constructor() {  }
+  constructor(private router: Router) {  }
 
   ngOnInit(): void {
   }
 
 
   async addUser() {
-    const docRef = await addDoc(this.getUsers(), this.user.toJSON());
-    this.user.id = docRef.id
-    // add routerlink to login component
+    const userDocRef = doc(this.getUsers());  // generate a new unique ID
+    this.user.id = userDocRef.id;  // place the unqiue id in the user modell
+    await setDoc(userDocRef, this.user.toJSON());
   }
+
+
+
 
   getUsers() {
     return collection(this.firestore, "users");
   }
+
+
+  addCategory() {
+    const categoryRef = doc(this.firestore, 'users', 'x')
+  }
+
+
+  readData() {
+    onSnapshot(this.getUsers(), (users) => {
+      users.forEach(user => {
+        console.log(user.data())
+        })
+      })
+  }
+
+
+
+
+
 
 
   // check Firestore collection "users" for a match of name and Password with a simple "where" query
@@ -45,10 +69,13 @@ export class UsersService implements OnInit {
       // Wenn der Benutzer gefunden wurde
       const userDoc = querySnapshot.docs[0];
       console.log('Benutzer gefunden:', userDoc.data());
+      this.router.navigate(['/maincontainer']);
       return userDoc.data() as User; // Gibt den Benutzer als User-Objekt zurück
+      
       
     }
   }
+}
 
   //   readData() {
   //   onSnapshot(this.getUsers(), (users) => {
@@ -59,16 +86,3 @@ export class UsersService implements OnInit {
   //     // console.log(this.allUser)
   //   })
   // }
-
-
-  readData() {
-    onSnapshot(this.getUsers(), (users) => {
-      users.forEach(user => {
-        console.log(user.data())
-      })
-        
-      })
-
-    
-  }
-}

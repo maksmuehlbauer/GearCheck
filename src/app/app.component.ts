@@ -2,9 +2,10 @@ import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterOutlet } from '@angular/router';
 import { LoginComponent } from './landing/login/login.component';
-import {MatSelectModule} from '@angular/material/select';
-import {MatInputModule} from '@angular/material/input';
-import {MatFormFieldModule} from '@angular/material/form-field';
+import { MatSelectModule } from '@angular/material/select';
+import { MatInputModule } from '@angular/material/input';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MainContainerComponent } from './main-container/main-container.component';
 
 @Component({
   selector: 'app-root',
@@ -15,7 +16,8 @@ import {MatFormFieldModule} from '@angular/material/form-field';
     LoginComponent,
     MatSelectModule,
     MatInputModule,
-    MatFormFieldModule],
+    MatFormFieldModule,
+    MainContainerComponent],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss'
 })

@@ -2,7 +2,9 @@
 
 
 html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+body { 
+  margin: 0 !important; 
+  font-family: Roboto, "Helvetica Neue", sans-serif; }
 
 
 $primary: #2E7D32; //darkgreen
@@ -26,6 +28,17 @@ $bg-color: #ececec;
   display: $f;
   justify-content: $jc;
   align-items: $ai;
+}
+
+.add-btn {
+  position: absolute;
+  bottom: 24px;
+  right: 24px;
+  width: 64px;
+  height: 64px;
+  background-color: #212121;
+  @include display();
+  border-radius: 100%;
 }
 
 .pos-rel {
@@ -62,7 +75,7 @@ a {
 
 
 h1 {
-  font-size: 32px;
+  font-size: 32px !important;
   color: black;
   font-weight: 500;
   margin: 0;
@@ -71,7 +84,7 @@ h1 {
 h2 {
   font-size: 24px;
   // color: $font-color-one;
-  font-weight: 600;
+  font-weight: 400;
   margin: 0;
 }
 
@@ -85,7 +98,7 @@ h3 {
 p {
   font-size: 14px;
   // color: $font-color-one;
-  margin: 0
+  margin: 0 !important; 
 }
 
 // Margins

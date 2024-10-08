@@ -1,0 +1,25 @@
+<mat-drawer-container class="example-container" autosize>
+    <mat-drawer #drawer class="example-sidenav" mode="side" [opened]="true">
+        <div class="mb-32 pl-32 logo-container">
+            <img src="./assets/img/logo3.png" alt="" class="logo-img">
+            <h4 class="logo-text">GearCheck</h4>
+        </div>
+        <div class="categorys-box">
+            <h2 class="mb-16 pl-32">Categorys</h2>
+            <a>Trekking</a>
+            <a>Snowboarding</a>
+        </div>
+        <button mat-fab color="primary" class="add-btn" >
+            <mat-icon>add</mat-icon>
+        </button>
+    </mat-drawer>
+  
+    <mat-toolbar>
+        <div class="example-sidenav-content">
+            <mat-icon class="sidenav-btn" (click)="drawer.toggle()">menu</mat-icon>
+            <app-header></app-header>
+            <div></div>
+        </div>
+    </mat-toolbar>
+  
+</mat-drawer-container>

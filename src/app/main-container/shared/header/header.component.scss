@@ -1,0 +1,14 @@
+@import './../../../../styles.scss';
+
+:host {
+    @include display();
+}
+
+div {
+    @include display();
+    gap: 32px;
+    width: 100%;
+    a {
+        color: white;
+    }
+}
