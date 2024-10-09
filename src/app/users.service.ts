@@ -7,6 +7,7 @@ import { Router } from '@angular/router';
 
 
 
+
 @Injectable({
   providedIn: 'root'
 })
@@ -14,12 +15,12 @@ export class UsersService implements OnInit {
 
   firestore: Firestore = inject(Firestore)
   user = new User();
-  // allUser: any[] = [];
+
+  loggedInUser: User[] = [];
 
   constructor(private router: Router) {  }
 
-  ngOnInit(): void {
-  }
+  ngOnInit(): void { }
 
 
   async addUser() {
@@ -27,8 +28,6 @@ export class UsersService implements OnInit {
     this.user.id = userDocRef.id;  // place the unqiue id in the user modell
     await setDoc(userDocRef, this.user.toJSON());
   }
-
-
 
 
   getUsers() {
@@ -41,20 +40,6 @@ export class UsersService implements OnInit {
   }
 
 
-  readData() {
-    onSnapshot(this.getUsers(), (users) => {
-      users.forEach(user => {
-        console.log(user.data())
-        })
-      })
-  }
-
-
-
-
-
-
-
   // check Firestore collection "users" for a match of name and Password with a simple "where" query
   // With getDocs we retrieve the results from the query "q"
   // if empty, nothing found, otherwise log in continues
@@ -63,19 +48,34 @@ export class UsersService implements OnInit {
     const querySnapshot = await getDocs(q);
     
     if (querySnapshot.empty) {
-      console.log('Benutzername oder Passwort ist falsch');
+      console.log('username and password dont match');
       return null;
     } else {
-      // Wenn der Benutzer gefunden wurde
       const userDoc = querySnapshot.docs[0];
-      console.log('Benutzer gefunden:', userDoc.data());
+      const userData = querySnapshot.docs[0].data() as User;
+      console.log('user found:', userDoc.data());
+      this.loggedInUser.push(userData)
       this.router.navigate(['/maincontainer']);
-      return userDoc.data() as User; // Gibt den Benutzer als User-Objekt zurück
-      
-      
+      return userData
+      // return userDoc.data() as User;
+            
     }
   }
+
+  getLoggedInUser(): User[] {
+    return this.loggedInUsers;
+  }
+
 }
+
+
+  // readData() {
+  //   onSnapshot(this.getUsers(), (users) => {
+  //     users.forEach(user => {
+  //       console.log(user.data())
+  //       })
+  //     })
+  // }
 
   //   readData() {
   //   onSnapshot(this.getUsers(), (users) => {

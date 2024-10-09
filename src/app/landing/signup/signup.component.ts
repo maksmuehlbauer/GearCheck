@@ -13,6 +13,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { User } from '../../models/user.model';
 // import { Firestore, collection, addDoc } from '@angular/fire/firestore';
 import { UsersService } from '../../users.service';
+import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
 
 
 @Component({
@@ -27,7 +28,7 @@ import { UsersService } from '../../users.service';
     MatInputModule,
     MatFormFieldModule,
     MatDividerModule,
-    MatButtonModule
+    MatButtonModule,
   ],
   templateUrl: './signup.component.html',
   styleUrl: './signup.component.scss'
@@ -46,6 +47,10 @@ export class SignupComponent {
   constructor() {
   }
 
+  usingFirebaseAuthService() {
+
+  }
+
 
   async saveUser(ngForm: NgForm) {
     if (ngForm.submitted && ngForm.form.valid && this.mailTest) {
@@ -53,21 +58,13 @@ export class SignupComponent {
 
     } else if (ngForm.submitted && ngForm.form.valid && !this.mailTest) {
       try {
-        // const docRef = await addDoc(collection(this.firestore, "users"), this.usersService.user.toJSON());
-        this.usersService.addUser()
-        console.info('Send Post Complete')
-        ngForm.resetForm();
+          this.usersService.addUser()
+          ngForm.resetForm();
+          console.info('Send Post Complete')
       } catch (error) {
-        console.error('Error add user to Firestore', error)
+          console.error('Error add user to Firestore', error)
       }
-      
-      
-      
-
-      // console.log(this.user)
-      // ngForm.resetForm();
-
-      
+           
     }
   }
 

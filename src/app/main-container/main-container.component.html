@@ -5,9 +5,10 @@
             <h4 class="logo-text">GearCheck</h4>
         </div>
         <div class="categorys-box">
-            <h2 class="mb-16 pl-32">Categorys</h2>
+            <h2 class="mb-16 pl-32" (click)="logUser()">Categorys</h2>
             <a>Trekking</a>
             <a>Snowboarding</a>
+            <h1>{{ loggedInUsers[0] }} </h1>
         </div>
         <button mat-fab color="primary" class="add-btn" >
             <mat-icon>add</mat-icon>

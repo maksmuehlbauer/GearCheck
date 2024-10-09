@@ -37,14 +37,6 @@ export class LoginComponent {
   uS = this.usersService.user
 
 
-  constructor() {
-  }
+  constructor() {  }
 
-  async logIn() {
-    // let userName = this.uS.name
-    // let pw = this.uS.password
-    // console.log(userName, pw)
-
-    // found = this.usersService.allUser.find(user => username )
-  }
 }
