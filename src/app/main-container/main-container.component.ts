@@ -28,10 +28,10 @@ export class MainContainerComponent implements OnInit {
   constructor(private usersService: UsersService) {}
 
   ngOnInit(): void {
-    this.loggedInUsers = this.usersService.getLoggedInUser();
+   
   }
 
-  logUser() {
-    console.log(this.loggedInUsers)
-  }
+  // logUser() {
+  //   console.log(this.loggedInUsers)
+  // }
 }

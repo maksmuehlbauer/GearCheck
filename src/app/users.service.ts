@@ -62,9 +62,9 @@ export class UsersService implements OnInit {
     }
   }
 
-  getLoggedInUser(): User[] {
-    return this.loggedInUsers;
-  }
+  // getLoggedInUser(): User[] {
+  //   return this.loggedInUser;
+  // }
 
 }
 
